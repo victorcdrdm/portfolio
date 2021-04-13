@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="form-project" style="margin-top: 10px">
+        {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.team) }}
+        {{ form_row(form.client) }}
+        {{ form_row(form.link) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.firstPictureFile) }}
+        {{ form_row(form.logoClientFile) }}
+        {{ form_widget(form.showProject) }}
+        <div class="flex-row form-date">
+            {{ form_row(form.period) }}
+            {{ form_row(form.periodEnd) }}
+        </div>
+        <div class="list-technologies">
+        <ul class="flex-row">
+            {% for technology in form.technologies %}
+                <li>
+                    <label>
+                        {{ form_widget(technology) }}
+                        {{ form_errors(technology) }}
+                        <span>{{ technology.vars.label }}</span>
+                    </label>
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+        <button type="submit">submit</button>
+        {{ form_end(form) }}
+        <div class="container-article">
+            <div class="flex-row article-title">
+                <h3>Articles</h3>
+                <a href="{{ path('admin_add_article', {'id': project.id}) }}">Nouvelle Section</a>
+            </div>
+            <ul>
+                {% for article in project.articles %}
+                    <li>
+                        <div class="flex-row article-end">
+                            <p>article: {{ loop.index}}</p>
+                            <div class="flex-row">
+                                <a href="{{ path('admin_edit_article',{name: project.name, id: article.id }) }}">Mdifier</a>
+                                <div>{{ include('admin/_delete_article.html.twig') }}</div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+

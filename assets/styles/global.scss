@@ -1,0 +1,162 @@
+
+
+.mr10{
+  margin-right: 10px;
+}
+.mr30 {
+  margin-right: 30px;
+}
+.mr60{
+  margin-right: 60px;
+}
+.mr100{
+  margin-right: 100px;
+}
+.row .col.m6{
+  padding: 0;
+}
+.image-profile{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.flex-row-user{
+  display: flex;
+  flex-direction: row;
+  }
+
+.end{
+  justify-content: flex-end;
+  text-align: end;
+}
+.center{
+  justify-content: center;
+}
+
+
+.item-technology, a{
+  align-self: center;
+}
+.add, .add-title{
+  text-align: end;
+}
+
+h2, h4{
+  margin: 0px;
+  padding: 0px;
+}
+button.btn-flat {
+  padding: 0px;
+}
+
+.block{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.col .row{
+  margin: 0px;
+}
+p{
+  margin: 0px;
+}
+
+.img-logo{
+  align-self: center;
+  height: 20px;
+  width: auto;
+  margin-left: 3px;
+}
+
+.flex-card{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .card{
+    width: 300px;
+    margin-inline: auto;
+  }
+}
+
+.technologies{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  a{
+      font-size: 25px;
+      text-decoration: underline;
+      cursor: pointer;
+  }
+}
+
+.projects-technology{
+  position: relative;
+  .container-technology-projects{
+    position: relative;
+    display: none;
+    opacity: 0;
+    width: 100%;
+  }
+  .active-block{
+    display: block;
+    opacity: 1;
+  }
+}
+
+#project_period, #project_periodEnd{
+  display: flex;
+  flex-direction: row;
+  margin-inline: auto;
+}
+
+#project_period .select-wrapper:nth-child(2),
+#project_periodEnd .select-wrapper:nth-child(2){
+  display: none;
+}
+
+.article-title, .article-end, .form-date, .list-technologies ul{
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-inline: auto;
+}
+
+.list-technologies ul li{
+  width: 150px;
+}
+
+.form-project{
+  margin: auto;
+  width:  80%;
+}
+
+
+
+
+@media (min-width: 601px) and (max-width: 900px){
+  .column{
+    flex-direction: column;
+    align-items: start;
+  }
+  .add{
+    text-align: start;
+  }
+}
+@media (max-width: 600px) {
+  .flex-row-container, .flex-row-title{
+    flex-direction: column;
+  }
+  .add, .add-title{
+    text-align: start;
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
+  .column{
+    flex-direction: column;
+    align-items: start;
+  }
+}

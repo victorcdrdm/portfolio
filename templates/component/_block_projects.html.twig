@@ -1,0 +1,47 @@
+<div id="block-project" class="block-project">
+    <h2>Mes projets</h2>
+    {% if technologies %}
+    <div class="technologies flex-row">
+        {% for technology in technologies %}
+            {% if loop.first %}
+                <a class="technology active" data-show="{{ loop.index }}">{{ technology }}</a>
+            {% else %}
+                <a class="technology" data-show="{{ loop.index }}">{{ technology }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="projects-technology">
+        {% for technology in technologies %}
+        {% if loop.first %}
+        <div class="row container-technology-projects active-block" data-show="{{ loop.index }}">
+            {% else %}
+            <div class="row container-technology-projects" data-show="{{ loop.index }}">
+                {% endif %}
+                <div class="valign-wrapper flex-card">
+                    {% for project in projects %}
+                        {% for technologyProject in project.technologies %}
+                            {% if technologyProject == technology %}
+                                <div class="card">
+                                    <div class="card-image">
+                                        {% if project.firstPicture %}
+                                            <img src="/uploads/pictures/{{ project.firstPicture }}"
+                                                 alt="image du projet">
+                                        {% endif %}
+                                        <a class="btn-floating halfway-fab waves-effect waves-light red"
+                                           href="{{ path('home_project',{ name :project.name} ) }}">
+                                            <i class="material-icons">add</i></a>
+                                    </div>
+                                    <div class="card-content">
+                                        <span class="card-title">{{ project.name }}</span>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>

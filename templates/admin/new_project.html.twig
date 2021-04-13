@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="form-project" style="margin-top: 10px">
+        {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.team) }}
+        {{ form_row(form.client) }}
+        {{ form_row(form.link) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.firstPictureFile) }}
+        {{ form_row(form.logoClientFile) }}
+        {{ form_widget(form.showProject) }}
+        <div class="flex-row form-date">
+            {{ form_row(form.period) }}
+            {{ form_row(form.periodEnd) }}
+        </div>
+        <div class="list-technologies">
+            <ul class="flex-row">
+                {% for technology in form.technologies %}
+                    <li>
+                        <label>
+                            {{ form_widget(technology) }}
+                            {{ form_errors(technology) }}
+                            <span>{{ technology.vars.label }}</span>
+                        </label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <button type="submit">submit</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+

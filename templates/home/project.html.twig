@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="navbar-project">
+        <div class="flex-row contact-project">
+            <div class="user">
+                <div class="flex-row info-user">
+                    <a href="/">
+                        <img class="img-user" src="/uploads/pictures/{{ user.picture.picture }}" alt="image-profile">
+                        <p>{{ user.name }}</p>
+                    </a>
+                </div>
+                <div class="me-contacter">
+                    <span>Me contacter :</span>
+                </div>
+            </div>
+            <div class="flex-row info-contact">
+                <div class="flex-row phone">
+                    <img src="{{ asset('build/images/callblack.png') }}" alt="Phone">
+                    <p>{{ user.phone }}</p>
+                </div>
+                <div class="flex-row mail">
+                    <img src="{{ asset('build/images/mailblack.png') }}" alt="mail">
+                    <p>{{ user.email }}</p>
+                </div>
+            </div>
+            <div class="flex-row link-contact">
+                <div class="separation"></div>
+                <a href="{{ user.github }}" target="_blank"><img src="{{ asset('build/images/githubblack.png') }}" alt="github"></a>
+                <a href="{{ user.linkedin }}" target="_blank"><img src="{{ asset('build/images/linkedinblack.png') }}" alt="linkedin"></a>
+                <a class="home-btn" href="/"><img src="{{ asset('build/images/homeblack.png') }}" alt="retour à la page d'accueil"></a>
+            </div>
+        </div>
+    </div>
+    <div class="block-project">
+        <div class="container-project" style="background-image: url('/uploads/pictures/{{ project.firstPicture }}')">
+            <div class="project-header" >
+                <div class="banner-header">
+                    <p><span>Période: </span> {{ project.period | date('m Y') }} - {{ project.periodEnd | date('m Y') }}</p>
+                    <img src="/uploads/pictures/{{ project.logoClient }}" alt="logo-Client">
+                </div>
+                <h2>{{ project.name }}</h2>
+                <div class="data-project">
+                    {% if project.team %}
+                        <div class="team">
+                            <p><span>Equipe : </span> {{ project.team }}</p>
+                        </div>
+                    {% endif %}
+                    {% if project.client %}
+                        <div class="client">
+                            <p><span>Client : </span> {{ project.client}}</p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="link-project">
+                    <a href="{{ project.link }}" target="_blank">Découvrir le site</a>
+                </div>
+                <div class="link-other-projects">
+                    <a href="{{ path('home_project', { 'name': backProject.name }) }}"><img class="back" src="{{ asset('build/images/arrowblack.png') }}" alt=""></a>
+                    <a href="{{ path('home_project', { 'name': nextProject.name }) }}"><img class="forward" src="{{ asset('build/images/arrowblack.png') }}" alt=""></a>
+                </div>
+                <div class="white-band"></div>
+            </div>
+        </div>
+        <div class="description-project">
+            {% apply markdown_to_html %}
+                {{ project.description }}
+            {% endapply %}
+        </div>
+        <div class="container-description">
+            <div class="selector">
+                <h3 id="screenshot-selector" class="active">Screenshot</h3>
+                <span>.</span>
+                <h3 id="methodology-selector">Méthodologie</h3>
+            </div>
+            <div class="screenshot hide-show" id="screenshot">
+                {% for article in project.articles %}
+                    <div class="picture-project">
+                        <img src="/uploads/pictures/{{ article.picture }}"
+                             alt="image du projet">
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="methodology" id="methodology">
+                {% for article in project.articles %}
+                    {% if article.text %}
+                        {% if loop.last is odd %}
+                            <div class="article last">
+                                <div class="article-text">
+                                    {% apply markdown_to_html %}
+                                        {{ article.text }}
+                                    {% endapply %}
+                                </div>
+                                <div class="article-picture">
+                                    <div class="picture-project">
+                                        <img src="/uploads/pictures/{{ article.picture }}"
+                                             alt="image du projet">
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="article">
+                                <div class="article-text">
+                                    {% apply markdown_to_html %}
+                                        {{ article.text }}
+                                    {% endapply %}
+                                </div>
+                                <div class="article-picture">
+                                    <div class="picture-project">
+                                        <img src="/uploads/pictures/{{ article.picture }}"
+                                             alt="image du projet">
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                <div class="row-picture">
+                {% for article in project.articles %}
+                    {% if article.text is empty %}
+                       <img src="/uploads/pictures/{{ article.picture }}"
+                        alt="image du projet">
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'component/_block_projects.html.twig' %}
+{% endblock %}

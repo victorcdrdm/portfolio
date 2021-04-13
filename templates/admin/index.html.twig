@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="flex-row-title">
+                <h2 class="col s12 m8">Mon profile</h2>
+                <div class="add-title col s12 m4">
+                    <a href="{{ path('admin_edit_profile') }}">Modifier profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m4">
+                <img class="image-profile" src="/uploads/pictures/{{ user.picture.picture }}" alt="{{ user.picture.picture  }}">
+            </div>
+            <div class="col s12 m8">
+                <p class="description">{{ user.description }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="block col s12 m6">
+                <div class="row">
+                    <div class="column">
+                        <h4 class="col m12 l7">Compétences</h4>
+                        <div class="add col m12 l5">
+                            <a href="{{ path('admin_new_skill') }}">Nouvelle compétences</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    {% for skill in skills %}
+                        <div class="row">
+                            <div class="col s6">
+                                <span class="item-technology">{{ skill.name }}</span>
+                                <img class="img-logo" src="/uploads/logos/{{ skill.logo }}" alt="{{ skill.logo }}">
+                            </div>
+                            <div class="col s6">
+                                <div class="flex-row end">
+                                    <div class="item-technology">
+                                        <a href="{{ path('admin_edit_skill', {'id': skill.id}) }}">Modifier</a>
+                                    </div>
+                                    <div class="item-technology">
+                                        {{ include('admin/_delete_skill.html.twig') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="block col s12 m6">
+                <div class="row">
+                    <div class="column">
+                        <h4 class="col m12 l8">Technologies</h4>
+                        <div class="add col m12 l4">
+                            <a href="{{ path('admin_new_technology') }}">Nouvelle technologie</a>
+                        </div>
+                    </div>
+                </div>
+                {% for technology in technologies  %}
+                    <div class="row">
+                        <div class="col s6">
+                            <div class="flex-row">
+                                <span class="item-technology">{{ technology.name }}</span>
+                                <img class="img-logo" src="/uploads/logos/{{ technology.logo }}" alt="{{ technology.logo }}">
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="flex-row end">
+                                <div class="item-technology">
+                                    <a href="{{ path('admin_edit_technology', {'id': technology.id}) }}">Modifier</a>
+                                </div>
+                                <div class="item-technology">
+                                    {{ include('admin/_delete_technology.html.twig') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="flex-row">
+                <h4 class="col s12 m8">Diplomes</h4>
+                <div class="add-title col s12 m4">
+                    <a href="{{ path('admin_new_education') }}">nouveau diplome</a>
+                </div>
+            </div>
+        </div>
+        <div>
+            {% for education in educations %}
+                <div class="row">
+                    <div class="col s6">
+                        {{ education.name }} {{ education.schoolName }}, {{ education.city }}
+                    </div>
+                    <div class="col s6">
+                        <div class="flex-row end">
+                            <div class="item-technology">
+                                <a href="{{ path('admin_edit_education', {'id': education.id}) }}">Modifier</a>
+                            </div>
+                            <div class="item-technology">
+                                {{ include('admin/_delete_education.html.twig') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="flex-row-title">
+                <h4 class="col s12 m8">Projets</h4>
+                <div class="add-title col s12 m4">
+                    <a href="{{ path('admin_new_project') }}">Nouveau project</a>
+                </div>
+            </div>
+        </div>
+        {% for project in projects %}
+            <div class="row">
+                <div class="col s6">
+                    <div class="flex-row">
+                        <span>{{ project.name }}</span>
+                    </div>
+                </div>
+                <div class="col s6">
+                    <div class="flex-row end">
+                        <div class="item-technology">
+                            <a href="{{ path('admin_edit_project',{'id': project.id}) }}">Modifier</a>
+                        </div>
+                        <div class="item-technology">
+                            {{ include('admin/_delete_project.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

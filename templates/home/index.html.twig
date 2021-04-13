@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="block-profile">
+        <div class="block-user">
+            <div class="flex-row contact">
+                <span class="mr30">Me contacter :</span>
+                <div class="info-contact">
+                    <div class="phone mr30 flex-row">
+                        <img class="mr10" src="{{ asset('build/images/phone.png') }}" alt="phone">
+                        <p>{{ user.phone }}</p>
+                    </div>
+                    <div class="mail mr30 flex-row">
+                        <img class="mr10" src="{{ asset('build/images/envelope.png') }}" alt="envelope">
+                        <p>{{ user.email }}</p>
+                    </div>
+                </div>
+                <div class="link-contact">
+                    <div class="separation mr30"></div>
+                    <div class="logo-web flex-row">
+                        <a class="logo" target="_blank" href="{{ user.github }}"><img src="{{ asset('build/images/github.png') }}" alt="github"></a>
+                        <a class="logo" target="_blank" href="{{ user.linkedin }}"><img src="{{ asset('build/images/linkedin.png') }}" alt="linkedin"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="user-description">
+                <img class="image-profile" src="/uploads/pictures/{{ user.picture.picture }}"
+                     alt="{{ user.picture.picture }}">
+                <div class="information">
+                    <h1>{{ user.name }}</h1>
+                    <h6>{{ user.job }}</h6>
+                    <p>{{ user.description }}</p>
+                    <div class="flex-row-user">
+                        <div class="block">
+                            <h5>Téchnologies</h5>
+                            <div class="flex-row">
+                                {% for technology in technologies %}
+                                    {% if technology.logo %}
+                                        <img class="img-logo" src="/uploads/logos/{{ technology.logo }}"
+                                             alt="{{ technology.logo }}">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="block">
+                            <h5>Compétences</h5>
+                            <div class="flex-row">
+                                <div class="flex-row skill">
+                                    {% for skill in skills %}
+                                        {% if loop.last %}
+                                                {{ skill.name }}
+                                            {% else %}
+                                                {{ skill.name ~ ', ' }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="skills col s6">
+                </div>
+            </div>
+        </div>
+        <div class="block-time-line">
+            <div class="timeline" style="display: none" id="timeline">
+                {% for project in timeLine %}
+                    <div class="project-line">
+                        <div class="date">{{ project.period | date('m Y') }}</div>
+                        <div class="break-point"></div>
+                        <div class="right-side">
+                            <div class="title">{{ project.name }}</div>
+                            <div class="description">
+                                {% apply markdown_to_html %}
+                                    {{ project.description }}
+                                {% endapply %}
+                            </div>
+                            <h6>competence</h6>
+                            <div class="line">
+                                {% for technology in project.technologies %}
+                                    {% if technology.logo %}
+                                        <img class="img-logo" src="/uploads/logos/{{ technology.logo }}"
+                                             alt="{{ technology.logo }}">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="flex-row center banner-time-line" id="action-timeline">
+                <h3 class="mr30">Découvrir mon parcours</h3>
+                <img id="toggle" src="{{ asset('build/images/arrow.png') }}" alt="boutton">
+            </div>
+        </div>
+            {% include 'component/_block_projects.html.twig' %}
+    </div>
+{% endblock %}

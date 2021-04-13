@@ -1,0 +1,10 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        logos:
+            uri_prefix: /logos
+            upload_destination: '%kernel.project_dir%/public/uploads/logos'
+        pictures:
+            uri_prefix: /pictures
+            upload_destination: '%kernel.project_dir%/public/uploads/pictures'

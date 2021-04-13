@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ form_start(form) }}
+{{ form_row(form.name) }}
+{{ form_row(form.address) }}
+{{ form_row(form.phone) }}
+{{ form_row(form.github) }}
+{{ form_row(form.linkedin) }}
+{{ form_row(form.city) }}
+{{ form_row(form.job) }}
+{{ form_row(form.description) }}
+{{ form_row(form.picture) }}
+    <ul>
+        {% for technology in form.technologies %}
+            <li>
+                <label>
+                    {{ form_widget(technology) }}
+                    {{ form_errors(technology) }}
+                    <span>{{ technology.vars.label }}</span>
+                </label>
+            </li>
+        {% endfor %}
+    </ul>
+    <button type="submit">submit</button>
+
+{{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,12 @@
+@font-face {
+    font-family: Poppins;
+    src: url("../../../portfolio-vic/assets/font/Poppins.ttf");
+}
+@font-face {
+    font-family: Helvetica;
+    src: url("../../../portfolio-vic/assets/font/Helvetica.ttf");
+}
+@import "materialize.min.css";
+@import "global";
+@import "home";
+@import "project";
