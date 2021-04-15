@@ -18,6 +18,10 @@
     font-family: Helvetica-bold;
     src: url("/assets/font/Helvetica-Bold.ttf");
 }
+@font-face {
+    font-family: Helvetica-light;
+    src: url("/assets/font/helvetica-light.ttf");
+}
 @import "materialize.min.css";
 @import "global";
 @import "home";
