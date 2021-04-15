@@ -64,35 +64,37 @@
                 </div>
             </div>
         </div>
-        <div class="block-time-line">
-            <div class="timeline" style="display: none" id="timeline">
-                {% for project in timeLine %}
-                    <div class="project-line">
-                        <div class="date">{{ project.period | date('m Y') }}</div>
-                        <div class="break-point"></div>
-                        <div class="right-side">
-                            <div class="title">{{ project.name }}</div>
-                            <div class="description">
-                                {% apply markdown_to_html %}
-                                    {{ project.description }}
-                                {% endapply %}
-                            </div>
-                            <h6>competence</h6>
-                            <div class="line">
-                                {% for technology in project.technologies %}
-                                    {% if technology.logo %}
-                                        <img class="img-logo" src="/uploads/logos/{{ technology.logo }}"
-                                             alt="{{ technology.logo }}">
-                                    {% endif %}
-                                {% endfor %}
+        <div class="container-time-line">
+            <div class="block-time-line">
+                <div class="timeline" style="display: none" id="timeline">
+                    {% for project in timeLine %}
+                        <div class="project-line">
+                            <div class="date">{{ project.period | date('m Y') }}</div>
+                            <div class="break-point"></div>
+                            <div class="right-side">
+                                <div class="title">{{ project.name }}</div>
+                                <div class="description">
+                                    {% apply markdown_to_html %}
+                                        {{ project.description }}
+                                    {% endapply %}
+                                </div>
+                                <h6>competence</h6>
+                                <div class="line">
+                                    {% for technology in project.technologies %}
+                                        {% if technology.logo %}
+                                            <img class="img-logo" src="/uploads/logos/{{ technology.logo }}"
+                                                 alt="{{ technology.logo }}">
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="flex-row center banner-time-line" id="action-timeline">
-                <h3 class="mr30">Découvrir mon parcours</h3>
-                <img id="toggle" src="{{ asset('build/images/arrow.png') }}" alt="boutton">
+                    {% endfor %}
+                </div>
+                <div class="flex-row center banner-time-line" id="action-timeline">
+                    <h3 class="mr30">Découvrir mon parcours</h3>
+                    <img id="toggle" src="{{ asset('build/images/arrow.png') }}" alt="boutton">
+                </div>
             </div>
         </div>
             {% include 'component/_block_projects.html.twig' %}
