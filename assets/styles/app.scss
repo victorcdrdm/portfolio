@@ -1,10 +1,22 @@
 @font-face {
     font-family: Poppins;
-    src: url("../../../portfolio-vic/assets/font/Poppins.ttf");
+    src: url("/assets/font/Poppins.ttf");
 }
 @font-face {
     font-family: Helvetica;
-    src: url("../../../portfolio-vic/assets/font/Helvetica.ttf");
+    src: url("/assets/font/Helvetica.ttf");
+}
+@font-face {
+    font-family: Poppins-light;
+    src: url("/assets/font/Poppins-ExtraLight.ttf");
+}
+@font-face {
+    font-family: Poppins-medium;
+    src: url("/assets/font/Poppins-medium.ttf");
+}
+@font-face {
+    font-family: Helvetica-bold;
+    src: url("/assets/font/Helvetica-Bold.ttf");
 }
 @import "materialize.min.css";
 @import "global";
