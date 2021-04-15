@@ -77,9 +77,26 @@ p{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  .card{
-    width: 300px;
+  margin-bottom: 120px;
+  .card-project{
+    width: 387px;
     margin-inline: auto;
+    margin-top: 40px;
+    a{
+      text-decoration: none;
+      color: black;
+    }
+    img{
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    .card-content{
+      .card-title{
+        font-family: Poppins,sans-serif;
+        font-size: 28px;
+        font-weight: 500;
+      }
+    }
   }
 }
 
@@ -101,6 +118,9 @@ p{
     display: none;
     opacity: 0;
     width: 100%;
+    .card{
+      border: none;
+    }
   }
   .active-block{
     display: block;
@@ -135,8 +155,36 @@ p{
 }
 
 
-
-
+@media (max-width: 1319px){
+  .technologies{
+    margin-bottom: 20px;
+  }
+  .flex-card{
+    .card-project{
+      width: 400px;
+      margin-top: 20px;
+    }
+  }
+}
+@media (max-width: 864px) {
+  .technologies{
+    margin-bottom: 0;
+  }
+  .flex-card{
+    .card-project{
+      width: 300px;
+      margin-top: 20px;
+      img{
+        margin-bottom: 10px;
+      }
+      .card-content{
+        .card-title{
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
 @media (min-width: 601px) and (max-width: 900px){
   .column{
     flex-direction: column;
