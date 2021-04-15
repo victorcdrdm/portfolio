@@ -42,7 +42,8 @@ if (selectMethodology) {
 
     const slides = document.getElementsByClassName("technology-slide")
     const blockTechnologies = document.getElementById('slides')
-
+    const btnBack = document.getElementById("btnback")
+    const btnNext = document.getElementById("btnnext")
 
     document.getElementById("btnback").addEventListener("click",() => {
         futureSlide(-1)
@@ -55,10 +56,10 @@ if (selectMethodology) {
     function futureSlide(n) {
         newSlide(slideindex += n)
     }
+
     function newSlide(n) {
         if (n < 1) {
             slideindex = 1
-
         }
         if (n > slides.length) {
             slideindex = slides.length
@@ -71,6 +72,20 @@ if (selectMethodology) {
         slides[slideindex-1].style.display = "block"
         let index = slides[slideindex-1].getAttribute('data-show')
         showProjects(index)
+
+        console.log(slideindex)
+        console.log(slides.length)
+
+        if (slideindex === 1){
+            btnBack.style.opacity = '0'
+        } else {
+            btnBack.style.opacity = '1'
+        }
+        if (slideindex === slides.length) {
+            btnNext.style.opacity = '0'
+        } else  {
+            btnNext.style.opacity = '1'
+        }
     }
 
 
