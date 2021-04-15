@@ -234,18 +234,21 @@
     margin-bottom: 50px;
   }
   .technologies{
+    width: 80%;
+    margin: 10% auto;
     a{
       text-decoration: none;
-      font-family: Poppins, sans-serif;
+      font-family: Poppins-light, sans-serif;
       font-size: 24px;
       font-weight: 200;
       color: black;
     }
     a:hover{
       color: #9F9F9F;
+
     }
     .active{
-      font-weight: 500;
+      font-family: Poppins,sans-serif;
       text-decoration: underline;
     }
   }
