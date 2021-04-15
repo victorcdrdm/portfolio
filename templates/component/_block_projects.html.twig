@@ -29,7 +29,7 @@
             {% else %}
             <div class="row container-technology-projects" data-show="{{ loop.index }}">
                 {% endif %}
-                <div class="valign-wrapper flex-card">
+                <div class="flex-card">
                     {% for project in projects %}
                         {% for technologyProject in project.technologies %}
                             {% if technologyProject == technology %}
