@@ -207,7 +207,7 @@
       border-bottom: #FFFFFF 4px solid;
     }
     span{
-      margin-inline: 20px;
+      margin: 20px;
     }
   }
   .screenshot{
@@ -424,7 +424,7 @@
       .row-picture{
         img {
           width: 100%;
-          height: auto;
+          height: 100%;
         }
       }
     }
