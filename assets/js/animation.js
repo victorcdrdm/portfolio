@@ -99,7 +99,7 @@ function showProjects(index){
     }
     for (j = 0; j < projects.length; j++) {
         if (projects[j].getAttribute('data-show') === index) {
-            projects[j].classList.toggle('active-block')
+            projects[j].classList.add('active-block')
         } else {
             projects[j].classList.remove('active-block')
         }
