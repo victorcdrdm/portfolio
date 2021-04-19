@@ -210,11 +210,11 @@ class Project
     }
 
 
-    public function setFirstPictureFile(File $firstPicture = null)
+    public function setFirstPictureFile(File $firstPicture = null) :Project
     {
         $this->firstPictureFile = $firstPicture;
         if ($firstPicture) {
-            $this->updatedAt = new \DateTime('now');
+            $this->updateAt = new \DateTime('now');
         }
         return $this;
     }
