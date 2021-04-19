@@ -85,7 +85,7 @@
                 {% for article in project.articles %}
                     {% if article.text %}
                         {% if loop.last is odd %}
-                            <div class="article last">
+                            <div class="article-last">
                                 <div class="article-text">
                                     {% apply markdown_to_html %}
                                         {{ article.text }}
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="article-picture">
                                     <div class="picture-project">
-                                        <img src="/uploads/pictures/{{ article.picture }}"
+                                        <img class="img-last" src="/uploads/pictures/{{ article.picture }}"
                                              alt="image du projet">
                                     </div>
                                 </div>
