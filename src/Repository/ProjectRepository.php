@@ -36,15 +36,25 @@ class ProjectRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Project
+
+    public function findNextId($value): ?Project
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
+            ->andWhere('p.id > :val')
             ->setParameter('val', $value)
+            ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+    public function findPreviousId($value): ?Project
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.id < :val')
+            ->setParameter('val', $value)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 }
