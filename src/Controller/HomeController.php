@@ -62,27 +62,17 @@ class HomeController extends AbstractController
         $maxId = $projectRepository->findOneBy(array(),['id' => 'DESC']);
         $maxId = $maxId->getId();
 
-        $nextId = intval($project->getId()) +1;
-        $backId = intval($project->getId()) -1;
+        $nextId = $projectRepository->findNextId($project->getId());
+        $backId = $projectRepository->findPreviousId($project->getId());
 
-        if ($nextId > $maxId) {
-            $projectNext = $projectRepository->findOneBy(['id' => $minId]);
-        } else {
-            $projectNext = $projectRepository->findOneBy(['id' => $nextId]);
-        }
-
-        if ($backId < $minId) {
-            $projectBack = $projectRepository->findOneBy(['id' => $maxId]);
-        } else {
-            $projectBack = $projectRepository->findOneBy(['id' => $backId]);
-        }
         $technologies = $technologyRepository->findby(array(), ['name' => 'ASC']);
         $projects     = $projectRepository->findAll();
         $user         = $userRepository->findAll();
+
         return $this->render('home/project.html.twig',[
             'technologies' => $technologies,
-            'backProject'  => $projectBack,
-            'nextProject'  => $projectNext,
+            'backProject'  => $backId,
+            'nextProject'  => $nextId,
             'projects'     => $projects,
             'project'      => $project,
             'user'         => $user[0],

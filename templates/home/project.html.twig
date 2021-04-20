@@ -56,8 +56,12 @@
                     <a href="{{ project.link }}" target="_blank">Découvrir le site</a>
                 </div>
                 <div class="link-other-projects">
-                    <a href="{{ path('home_project', { 'name': backProject.name }) }}"><img class="back" src="{{ asset('build/images/arrowblack.png') }}" alt=""></a>
-                    <a href="{{ path('home_project', { 'name': nextProject.name }) }}"><img class="forward" src="{{ asset('build/images/arrowblack.png') }}" alt=""></a>
+                    {% if backProject %}
+                        <a href="{{ path('home_project', { 'name': backProject.name }) }}"><img class="back" src="{{ asset('build/images/arrowblack.png') }}" alt=""></a>
+                    {% endif %}
+                    {% if nextProject %}
+                        <a href="{{ path('home_project', { 'name': nextProject.name }) }}"><img class="forward" src="{{ asset('build/images/arrowblack.png') }}" alt=""></a>
+                    {% endif %}
                 </div>
                 <div class="white-band"></div>
             </div>
