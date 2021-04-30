@@ -7,12 +7,16 @@
                 <span class="mr30">Me contacter :</span>
                 <div class="info-contact">
                     <div class="phone mr30 flex-row">
+                        <a href="tel:{{ user.phone }}" class="flex-row">
                         <img class="mr10" src="{{ asset('build/images/phone.png') }}" alt="phone">
                         <p>{{ user.phone }}</p>
+                        </a>
                     </div>
                     <div class="mail mr30 flex-row">
+                        <a href="mailto:{{ user.email }}" class="flex-row">
                         <img class="mr10" src="{{ asset('build/images/envelope.png') }}" alt="envelope">
                         <p>{{ user.email }}</p>
+                        </a>
                     </div>
                 </div>
                 <div class="link-contact">
