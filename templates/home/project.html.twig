@@ -16,12 +16,16 @@
             </div>
             <div class="flex-row info-contact">
                 <div class="flex-row phone">
+                    <a href="tel:{{ user.phone }}"class="flex-row">
                     <img src="{{ asset('build/images/callblack.png') }}" alt="Phone">
                     <p>{{ user.phone }}</p>
+                    </a>
                 </div>
                 <div class="flex-row mail">
+                    <a href="mailto:{{ user.email }}" class="flex-row">
                     <img src="{{ asset('build/images/mailblack.png') }}" alt="mail">
                     <p>{{ user.email }}</p>
+                    </a>
                 </div>
             </div>
             <div class="flex-row link-contact">

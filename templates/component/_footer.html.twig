@@ -5,12 +5,16 @@
             {% if user %}
                 <div class="info-contact">
                     <div class="phone flex-row">
+                        <a href="tel{{ user.phone }}" class="flex-row">
                         <img class="mr10" src="{{ asset('build/images/phone.png') }}" alt="phone">
-                        <p>06.31.73.65.87</p>
+                        <p>{{ user.phone }}</p>
+                        </a>
                     </div>
                     <div class="mail flex-row">
+                        <a href="mailto:{{ user.email }}" class="flex-row">
                         <img class="mr10" src="{{ asset('build/images/envelope.png') }}" alt="envelope">
                         <p>victorcrombez@gmail.com</p>
+                        </a>
                     </div>
                 </div>
                 <div class="link-contact">
