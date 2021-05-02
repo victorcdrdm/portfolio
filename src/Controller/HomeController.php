@@ -65,12 +65,6 @@ class HomeController extends AbstractController
         $nextId = $projectRepository->findNextId($project->getId());
         $backId = $projectRepository->findPreviousId($project->getId());
 
-        dump($backId);
-//
-//        if ($nextId === null){
-//            $backId = $nextId - 2;
-//        }
-
         $technologies = $technologyRepository->findby(array(), ['name' => 'ASC']);
         $projects     = $projectRepository->findAll();
         $user         = $userRepository->findAll();
