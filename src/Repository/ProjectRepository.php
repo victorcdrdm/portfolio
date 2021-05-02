@@ -53,6 +53,7 @@ class ProjectRepository extends ServiceEntityRepository
             ->andWhere('p.id < :val')
             ->setParameter('val', $value)
             ->setMaxResults(1)
+            ->orderBy('p.id' , 'DESC')
             ->getQuery()
             ->getOneOrNullResult();
     }

@@ -41,7 +41,9 @@
             <div class="project-header" >
                 <div class="banner-header">
                     <p><span>Période: </span> {{ project.period | date('m Y') }} - {{ project.periodEnd | date('m Y') }}</p>
-                    <img src="/uploads/logos/{{ project.logoClient }}" alt="logo-Client">
+                        {% if  project.logoClient %}
+                            <img src="/uploads/logos/{{ project.logoClient }}" alt="logo-Client">
+                        {% endif %}
                 </div>
                 <h2>{{ project.name }}</h2>
                 <div class="data-project">
